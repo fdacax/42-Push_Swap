@@ -17,7 +17,6 @@
 # include <limits.h>
 # include <stdbool.h>
 # include "libft/libft.h"
-#include
 
 typedef enum ops
 {
@@ -37,6 +36,7 @@ typedef struct s_stack
 {
 	int				number;
 	int				index;
+	int				data;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }		t_stack;
@@ -44,7 +44,16 @@ typedef struct s_stack
 /* ************************************************************************** */
 /*                                   StackOps                                 */
 /* ************************************************************************** */
-void	ft_swap(t_stack **stack, char *str);
 
+void	do_op(t_stack **sa, t_stack **sb, t_ops op);
+void	ft_swap(t_stack **stack, char *str);
+void	ft_push(t_stack **stack1, t_stack **stack2, char *str);
+void	ft_rotate(t_stack **stack);
+
+/* ************************************************************************** */
+/*                                   list_utils                               */
+/* ************************************************************************** */
+
+void shift_stack(t_stack *stack);
 
 #endif
