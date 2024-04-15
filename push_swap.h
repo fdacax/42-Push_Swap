@@ -48,12 +48,16 @@ typedef struct s_stack
 void	do_op(t_stack **sa, t_stack **sb, t_ops op);
 void	ft_swap(t_stack **stack, char *str);
 void	ft_push(t_stack **stack1, t_stack **stack2, char *str);
-void	ft_rotate(t_stack **stack);
+void	ft_rotate(t_stack **stack, char *str);
+void	ft_reverse_rotate(t_stack **stack, char *str);
 
 /* ************************************************************************** */
 /*                                   list_utils                               */
 /* ************************************************************************** */
 
-void shift_stack(t_stack *stack);
+void	ft_shift_stack(t_stack *stack);
+t_stack	*ft_find_last_node(t_stack *stack);
+t_stack	*ft_find_penult_node(t_stack *stack);
+
 
 #endif

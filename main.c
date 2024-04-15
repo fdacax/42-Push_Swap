@@ -57,7 +57,7 @@ int main()
 	sb3->number = 80;
 	sb3->next = NULL;
 
-	do_op(&head_a,&head_b,RA);
+	do_op(&head_a,&head_b,RRB);
 
 	printf("List a:\n");
 	while (head_a)
