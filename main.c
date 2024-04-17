@@ -12,9 +12,28 @@
 
 #include "push_swap.h"
 
-int main()
+int main(int argc, char **argv)
 {
-	t_stack	*sa;
+	t_stack	*a;
+	t_stack	*b;
+
+	a = NULL;
+	b = NULL;
+	if(argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	init_stack_a(&a, argv + 1);
+	if (!stack_sorted(a))
+	{
+		if(ft_stack_len(a) == 2)
+			do_op(&a, &b, SA);
+		else if(ft_stack_len(a) == 3)
+			sort_three(a);
+	}
+
+	return (0);
+}
+
+/*	t_stack	*sa;
 	t_stack	*sa1;
 	t_stack	*sa2;
 	t_stack	*sa3;
@@ -70,5 +89,4 @@ int main()
 	{
 		printf("%i\n", head_b->number);
 		head_b = head_b->next;
-	}
-}
+	}*/

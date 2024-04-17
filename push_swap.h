@@ -34,15 +34,25 @@ typedef enum ops
 
 typedef struct s_stack
 {
-	int				number;
 	int				index;
 	int				data;
+	bool			above_median;
+	bool			cheapest;
 	struct s_stack	*next;
 	struct s_stack	*prev;
+	struct s_stack	*target_node;
 }		t_stack;
 
 /* ************************************************************************** */
-/*                                   StackOps                                 */
+/*                                   Stack_init                               */
+/* ************************************************************************** */
+
+void	init_stack_a(t_stack **stack, char **argv);
+long	ft_atol(const char *str);
+void	ft_add_node(t_stack **stack, int n);
+
+/* ************************************************************************** */
+/*                                   Stack_ops                                */
 /* ************************************************************************** */
 
 void	do_op(t_stack **sa, t_stack **sb, t_ops op);
@@ -52,12 +62,16 @@ void	ft_rotate(t_stack **stack, char *str);
 void	ft_reverse_rotate(t_stack **stack, char *str);
 
 /* ************************************************************************** */
-/*                                   list_utils                               */
+/*                                   Stack_utils                              */
 /* ************************************************************************** */
 
+int		ft_stack_len(t_stack *stack);
+bool	stack_sorted(t_stack *stack);
 void	ft_shift_stack(t_stack *stack);
 t_stack	*ft_find_last_node(t_stack *stack);
 t_stack	*ft_find_penult_node(t_stack *stack);
+void	sort_three(t_stack *stack);
+
 
 
 #endif
