@@ -16,3 +16,4 @@ void	sort_three(t_stack *stack)
 {
 	do_op(&stack, NULL, SA);
 }
+
