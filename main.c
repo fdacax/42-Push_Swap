@@ -21,13 +21,16 @@ int main(int argc, char **argv)
 	b = NULL;
 	if(argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
 	init_stack_a(&a, argv + 1);
 	if (!stack_sorted(a))
 	{
 		if(ft_stack_len(a) == 2)
 			do_op(&a, &b, SA);
 		else if(ft_stack_len(a) == 3)
-			sort_three(a);
+			sort_three(&a);
+		//else
 	}
 
 	return (0);

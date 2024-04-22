@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+bool	stack_sorted(t_stack *stack)
+{
+	if(!stack)
+		return (1);
+	while (stack->next)
+	{
+		if(stack->data > stack->next->data)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
+
 void	ft_shift_stack(t_stack *stack)
 {
 	while (stack)
@@ -36,19 +49,6 @@ t_stack	*ft_find_penult_node(t_stack *stack)
 	while (last_node->next->next)
 		last_node = last_node->next;
 	return (last_node);
-}
-
-bool	stack_sorted(t_stack *stack)
-{
-	if(!stack)
-		return (1);
-	while (stack->next)
-	{
-		if(stack->data > stack->next->data)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
 }
 
 int	ft_stack_len(t_stack *stack)

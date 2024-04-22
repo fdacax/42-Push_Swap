@@ -70,7 +70,8 @@ bool	stack_sorted(t_stack *stack);
 void	ft_shift_stack(t_stack *stack);
 t_stack	*ft_find_last_node(t_stack *stack);
 t_stack	*ft_find_penult_node(t_stack *stack);
-void	sort_three(t_stack *stack);
+void	sort_three(t_stack **stack);
+t_stack	*find_max_data(t_stack *stack);
 
 
 

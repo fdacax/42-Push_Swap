@@ -24,6 +24,7 @@ void	init_stack_a(t_stack **stack, char **argv)
 		if (n < INT_MIN || n > INT_MAX)
 			return ;
 		ft_add_node(stack, (int)n);
+		i++;
 	}
 }
 
