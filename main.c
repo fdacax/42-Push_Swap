@@ -16,14 +16,18 @@ int main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char **pinto;
 
 	a = NULL;
 	b = NULL;
-	if(argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	init_stack_a(&a, argv + 1);
+	if(argc == 1 || (argc == 2 && !argv[1][0])) {
+		return (0);
+	}
+	if (argc == 2) {
+		pinto = ft_split(argv[1], ' ');
+		init_stack_a(&a, pinto, argc);
+	}
+	init_stack_a(&a, argv, argc);
 	if (!stack_sorted(a))
 	{
 		if(ft_stack_len(a) == 2)
@@ -32,8 +36,24 @@ int main(int argc, char **argv)
 			sort_three(&a);
 		//else
 	}
-
+	ft_print_test(a, b);
 	return (0);
+}
+
+void ft_print_test(t_stack *head_a, t_stack *head_b)
+{
+	printf("List a:\n");
+	while (head_a)
+	{
+		printf("%i\n", head_a->data);
+		head_a = head_a->next;
+	}
+	printf("List b:\n");
+	while (head_b)
+	{
+		printf("%i\n", head_b->data);
+		head_b = head_b->next;
+	}
 }
 
 /*	t_stack	*sa;

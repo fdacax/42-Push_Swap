@@ -12,13 +12,14 @@
 
 #include "push_swap.h"
 
-void	init_stack_a(t_stack **stack, char **argv)
+void	init_stack_a(t_stack **stack, char **argv, int argc)
 {
 	long 	n;
 	int		i;
 
-	i = 0;
-	while (argv[i])
+	i = 1;
+
+	while (i < argc)
 	{
 		n = ft_atol(argv[i]);
 		if (n < INT_MIN || n > INT_MAX)
@@ -37,7 +38,7 @@ long	ft_atol(const char *str)
 	result = 0;
 	sign = 1;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] != 32)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	while (str[i] == '-' || str[i] == '+')
 	{

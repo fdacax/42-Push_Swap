@@ -43,11 +43,13 @@ typedef struct s_stack
 	struct s_stack	*target_node;
 }		t_stack;
 
+void ft_print_test(t_stack *head_a, t_stack *head_b);
+
 /* ************************************************************************** */
 /*                                   Stack_init                               */
 /* ************************************************************************** */
 
-void	init_stack_a(t_stack **stack, char **argv);
+void	init_stack_a(t_stack **stack, char **argv, int argc);
 long	ft_atol(const char *str);
 void	ft_add_node(t_stack **stack, int n);
 

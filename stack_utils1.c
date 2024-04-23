@@ -19,7 +19,6 @@ void	sort_three(t_stack **stack)
 	biggest_node = find_max_data(*stack);
 	if (biggest_node == *stack)
 		do_op(stack, NULL, RA);
-	do_op(stack, NULL, SA);
 }
 
 t_stack	*find_max_data(t_stack *stack)
