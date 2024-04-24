@@ -23,6 +23,12 @@ int main(int argc, char **argv)
 	if(argc == 1 || (argc == 2 && !argv[1][0])) {
 		return (0);
 	}
+	if(!check_duplicate(argv))
+		return (0);
+	if(!check_numbers(argv)) {
+		ft_putendl_fd("davi mama", 2);
+		return (0);
+	}
 	if (argc == 2) {
 		pinto = ft_split(argv[1], ' ');
 		init_stack_a(&a, pinto, argc);

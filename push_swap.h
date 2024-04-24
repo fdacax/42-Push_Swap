@@ -75,6 +75,11 @@ t_stack	*ft_find_penult_node(t_stack *stack);
 void	sort_three(t_stack **stack);
 t_stack	*find_max_data(t_stack *stack);
 
+/* ************************************************************************** */
+/*                                   Stack_error                              */
+/* ************************************************************************** */
 
+int	check_duplicate(char **argv);
+int	check_numbers(char **argv);
 
 #endif
