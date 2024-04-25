@@ -52,34 +52,37 @@ void ft_print_test(t_stack *head_a, t_stack *head_b);
 void	init_stack_a(t_stack **stack, char **argv, int argc);
 long	ft_atol(const char *str);
 void	ft_add_node(t_stack **stack, int n);
+void	ft_one_argc(t_stack **stack, char **str);
 
 /* ************************************************************************** */
 /*                                   Stack_ops                                */
 /* ************************************************************************** */
 
-void	do_op(t_stack **sa, t_stack **sb, t_ops op);
-void	ft_swap(t_stack **stack, char *str);
-void	ft_push(t_stack **stack1, t_stack **stack2, char *str);
-void	ft_rotate(t_stack **stack, char *str);
-void	ft_reverse_rotate(t_stack **stack, char *str);
+void		do_op(t_stack **sa, t_stack **sb, t_ops op);
+void		ft_swap(t_stack **stack, char *str);
+void		ft_push(t_stack **stack1, t_stack **stack2, char *str);
+void		ft_rotate(t_stack **stack, char *str);
+void		ft_reverse_rotate(t_stack **stack, char *str);
 
 /* ************************************************************************** */
 /*                                   Stack_utils                              */
 /* ************************************************************************** */
 
-int		ft_stack_len(t_stack *stack);
-bool	stack_sorted(t_stack *stack);
-void	ft_shift_stack(t_stack *stack);
-t_stack	*ft_find_last_node(t_stack *stack);
-t_stack	*ft_find_penult_node(t_stack *stack);
-void	sort_three(t_stack **stack);
-t_stack	*find_max_data(t_stack *stack);
+int			ft_stack_len(t_stack *stack);
+bool		stack_sorted(t_stack *stack);
+void		ft_shift_stack(t_stack *stack);
+t_stack		*ft_find_last_node(t_stack *stack);
+t_stack		*ft_find_penult_node(t_stack *stack);
+void		sort_three(t_stack **stack);
+t_stack		*find_max_data(t_stack *stack);
 
 /* ************************************************************************** */
 /*                                   Stack_error                              */
 /* ************************************************************************** */
 
-int	check_duplicate(char **argv);
-int	check_numbers(char **argv);
+void		ft_print_error(char *error);
+int			check_duplicate(char **argv);
+int			check_numbers(char **argv);
+int			check_arg(char **str);
 
 #endif
