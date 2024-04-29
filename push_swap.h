@@ -49,10 +49,11 @@ void ft_print_test(t_stack *head_a, t_stack *head_b);
 /*                                   Stack_init                               */
 /* ************************************************************************** */
 
-void	init_stack_a(t_stack **stack, char **argv, int argc);
+void	init_stack_a(t_stack **stack, int *data, int len);
 long	ft_atol(const char *str);
 void	ft_add_node(t_stack **stack, int n);
-void	ft_one_argc(t_stack **stack, char **str);
+int		*ft_add_number(char **str, int *nbr);
+
 
 /* ************************************************************************** */
 /*                                   Stack_ops                                */
@@ -80,9 +81,9 @@ t_stack		*find_max_data(t_stack *stack);
 /*                                   Stack_error                              */
 /* ************************************************************************** */
 
-void		ft_print_error(char *error);
-int			check_duplicate(char **argv);
+void		ft_print_error(void);
 int			check_numbers(char **argv);
-int			check_arg(char **str);
-
+int			check_arg(char **str, int *len);
+void		ft_check_errors(int argc, char **argv, int *len);
+void		check_duplicate(int *nbr, int len);
 #endif

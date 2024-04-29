@@ -16,10 +16,17 @@ int main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int 	*data;
+	int 	len;
 
+	len = 0;
+	ft_check_errors(argc, argv, &len);
+	data = ft_calloc(len, sizeof(int));
+	data = ft_add_number(argv, data);
+	check_duplicate(data, len);
 	a = NULL;
 	b = NULL;
-	init_stack_a(&a, argv, argc);
+	init_stack_a(&a, data, len);
 	if (!stack_sorted(a))
 	{
 		if(ft_stack_len(a) == 2)

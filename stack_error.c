@@ -12,30 +12,20 @@
 
 #include "push_swap.h"
 
-void ft_print_error(char *error)
+void ft_print_error(void)
 {
-	ft_putendl_fd(error, 2);
+	ft_putendl_fd("Error", 2);
 	exit (1);
 }
 
-int	check_duplicate(char **argv)
+void	ft_check_errors(int argc, char **argv, int *len)
 {
-	int	i;
-	int j;
-
-	i = 1;
-	while (argv[i])
-	{
-		j = i + 1;
-		while (argv[j])
-		{
-			if (ft_atol(argv[i]) == ft_atol(argv[j]))
-				return (0);
-			j++;
-		}
-	i++;
-	}
-	return (1);
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		ft_print_error();
+	if (!check_numbers(argv))
+		ft_print_error();
+	if (!check_arg(argv, len))
+		ft_print_error();
 }
 
 int	check_numbers(char **input)
@@ -51,10 +41,10 @@ int	check_numbers(char **input)
 		j = 0;
 		while (input[i][j])
 		{
-			if ((input[i][j] == '-' ||input[i][j] == '+')  && !(ft_isdigit(input[i][j + 1])))
+			if ((input[i][j] == '+' ||input[i][j] == '-')  && !(ft_isdigit(input[i][j + 1])))
 				return (0);
 			if (input[i][j] != ' ' && input[i][j] != '\t'
-				&& !(ft_isdigit(input[i][j])) && input[i][j] != '-' && input[i][j] != '+')
+				&& !(ft_isdigit(input[i][j])) && input[i][j] != '+' && input[i][j] != '-')
 				return (0);
 			if (ft_isdigit(input[i][j]))
 				flag_number = true;
@@ -63,16 +53,16 @@ int	check_numbers(char **input)
 		i++;
 	}
 	if (!flag_number)
-		return (0);
+		exit (1);
 	return (1);
 }
 
-int check_arg(char **str)
+int check_arg(char **str, int *len)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (str[i])
 	{
 		j = 0;
@@ -80,15 +70,42 @@ int check_arg(char **str)
 		{
 			while (str[i][j] == ' ' || str[i][j] == '\t')
 					j++;
+			if (str[i][j])
+			{
+				if (ft_atoi(&str[i][j]) != ft_atol(&str[i][j]))
+					return (0);
+				len += 1;
+			}
 			while ((str[i][j] == '-') || (str[i][j] == '+') || (ft_isdigit(str[i][j])))
 			{
 				if ((ft_isdigit(str[i][j])) && (str[i][j + 1] == '-' || str[i][j + 1] == '+'))
 					return (0);
 				j++;
 			}
-			j++;
 		}
 		i++;
 	}
 	return (1);
+}
+
+void	check_duplicate(int *nbr, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (nbr[i] == nbr[j])
+			{
+				free(nbr);
+				ft_print_error();
+			}
+			j++;
+		}
+		i++;
+	}
 }
