@@ -36,6 +36,7 @@ typedef struct s_stack
 {
 	int				index;
 	int				data;
+	int 			cost;
 	bool			above_median;
 	bool			cheapest;
 	struct s_stack	*next;
@@ -49,21 +50,26 @@ void ft_print_test(t_stack *head_a, t_stack *head_b);
 /*                                   Stack_init                               */
 /* ************************************************************************** */
 
-void	init_stack_a(t_stack **stack, int *data, int len);
-long	ft_atol(const char *str);
-void	ft_add_node(t_stack **stack, int n);
-int		*ft_add_number(char **str, int *nbr);
+void			init_stack_a(t_stack **stack, int *data, int len);
+long			ft_atol(const char *str);
+void			ft_add_node(t_stack **stack, int n);
+int				*ft_add_number(char **str, int *nbr);
+void			init_nodes_a(t_stack *sa, t_stack *sb);
+void			node_index(t_stack *stack);
+static	void 	set_target_a_to_b(t_stack *sa, t_stack *sb);
+static	void	set_cost_to_b(t_stack *sa, t_stack *sb);
+void			set_cheapest(t_stack *stack)
 
 
 /* ************************************************************************** */
 /*                                   Stack_ops                                */
 /* ************************************************************************** */
 
-void		do_op(t_stack **sa, t_stack **sb, t_ops op);
-void		ft_swap(t_stack **stack, char *str);
-void		ft_push(t_stack **stack1, t_stack **stack2, char *str);
-void		ft_rotate(t_stack **stack, char *str);
-void		ft_reverse_rotate(t_stack **stack, char *str);
+void			do_op(t_stack **sa, t_stack **sb, t_ops op);
+void			ft_swap(t_stack **stack, char *str);
+void			ft_push(t_stack **stack1, t_stack **stack2, char *str);
+void			ft_rotate(t_stack **stack, char *str);
+void			ft_reverse_rotate(t_stack **stack, char *str);
 
 /* ************************************************************************** */
 /*                                   Stack_utils                              */
@@ -76,6 +82,12 @@ t_stack		*ft_find_last_node(t_stack *stack);
 t_stack		*ft_find_penult_node(t_stack *stack);
 void		sort_three(t_stack **stack);
 t_stack		*find_max_data(t_stack *stack);
+void		stack_sort(t_stack **sa, t_stack **sb);
+t_stack		cheapest_node(t_stack *stack);
+void		move_to_b(t_stack **sa, t_stack **sb);
+void		ft_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheapest_node);
+void 		ft_r_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheapest_node);
+void 		prep_for_push(t_stack **stack, t_stack *node, char name);
 
 /* ************************************************************************** */
 /*                                   Stack_error                              */

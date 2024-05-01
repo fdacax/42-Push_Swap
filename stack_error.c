@@ -74,7 +74,7 @@ int check_arg(char **str, int *len)
 			{
 				if (ft_atoi(&str[i][j]) != ft_atol(&str[i][j]))
 					return (0);
-				len += 1;
+				*len += 1;
 			}
 			while ((str[i][j] == '-') || (str[i][j] == '+') || (ft_isdigit(str[i][j])))
 			{
