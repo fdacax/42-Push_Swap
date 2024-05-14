@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+void	init_nodes_a(t_stack *sa, t_stack *sb)
+{
+	node_index(sa);
+	node_index(sb);
+	set_target_a_to_b(sa, sb);
+	set_cost_to_b(sa, sb);
+	set_cheapest(sa);
+}
+
 void	node_index(t_stack *stack)
 {
 	int	i;
@@ -33,7 +42,7 @@ void	node_index(t_stack *stack)
 	}
 }
 
-static void	set_target_a_to_b(t_stack *sa, t_stack *sb)
+void	set_target_a_to_b(t_stack *sa, t_stack *sb)
 {
 	t_stack	*sb_aux;
 	t_stack	*target;
@@ -53,15 +62,14 @@ static void	set_target_a_to_b(t_stack *sa, t_stack *sb)
 			sb_aux = sb_aux->next;
 		}
 		if (min_index == LONG_MIN)
-			sa->target_node = find_max_data(b);
+			sa->target_node = find_max_data(sb);
 		else
 			sa->target_node = target;
 		sa = sa->next;
-
 	}
 }
 
-static void	set_cost_to_b(t_stack *sa, t_stack *sb)
+void	set_cost_to_b(t_stack *sa, t_stack *sb)
 {
 	int len_sa;
 	int	len_sb;
@@ -73,7 +81,7 @@ static void	set_cost_to_b(t_stack *sa, t_stack *sb)
 		sa->cost = sa->index;
 		if(!(sa->above_median))
 			sa->cost = len_sa - (sa->index);
-		if(sa->above_median)
+		if(sa->target_node->above_median)
 			sa->cost += sa->target_node->index;
 		else
 			sa->cost += len_sb - (sa->target_node->index);
@@ -98,13 +106,5 @@ void	set_cheapest(t_stack *stack)
 		stack = stack->next;
 	}
 	cheapest_node->cheapest = true;
+}
 
-}
-void	init_nodes_a(t_stack *sa, t_stack *sb)
-{
-	node_index(sa);
-	node_index(sb);
-	set_target_a_to_b(sa, sb);
-	set_cost_to_b(sa, sb);
-	set_cheapest(sa);
-}

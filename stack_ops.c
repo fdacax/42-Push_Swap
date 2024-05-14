@@ -16,20 +16,24 @@ void	do_op(t_stack **sa, t_stack **sb, t_ops op)
 {
 	if (op == SA)
 		return (ft_swap(sa, "sa"));
-	if (op == SB)
+	else if (op == SB)
 		return (ft_swap(sb, "sb"));
-	if(op == PA)
+	else if(op == PA)
 		return (ft_push(sa, sb, "pa"));
-	if(op == PB)
+	else if(op == PB)
 		return (ft_push(sa, sb, "pb"));
-	if(op == RA)
+	else if(op == RA)
 		return (ft_rotate(sa, "ra"));
-	if (op == RB)
+	else if (op == RB)
 		return (ft_rotate(sb, "rb"));
-	if(op == RRA)
+	else if(op == RRA)
 		return(ft_reverse_rotate(sa, "rra"));
-	if(op == RRB)
+	else if(op == RRB)
 		return(ft_reverse_rotate(sb, "rrb"));
+	else if (op == RR)
+		return (ft_rr(sa, sb, "rr"));
+	else if (op == RRR)
+		return (ft_rrr(sa, sb, "rrr"));
 }
 
 void	ft_swap(t_stack **stack, char *str)

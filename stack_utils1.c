@@ -43,3 +43,22 @@ t_stack	*find_max_data(t_stack *stack)
 	return (max_node);
 }
 
+t_stack *find_min_data(t_stack *stack)
+{
+	long	min_data;
+	t_stack *min_node;
+
+	if(!stack)
+		return (NULL);
+	min_data = LONG_MAX;
+	while (stack)
+	{
+		if (stack->data < min_data)
+		{
+			min_data = stack->data;
+			min_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (min_node);
+}

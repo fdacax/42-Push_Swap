@@ -14,8 +14,8 @@
 
 int main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	*sa;
+	t_stack	*sb;
 	int 	*data;
 	int 	len;
 
@@ -24,19 +24,19 @@ int main(int argc, char **argv)
 	data = ft_calloc(len, sizeof(int));
 	data = ft_add_number(argv, data);
 	check_duplicate(data, len);
-	a = NULL;
-	b = NULL;
-	init_stack_a(&a, data, len);
-	if (!stack_sorted(a))
+	sa = NULL;
+	sb = NULL;
+	init_stack_a(&sa, data, len);
+	if (!stack_sorted(sa))
 	{
-		if(ft_stack_len(a) == 2)
-			do_op(&a, &b, SA);
-		else if(ft_stack_len(a) == 3)
-			sort_three(&a);
+		if(ft_stack_len(sa) == 2)
+			do_op(&sa, &sa, SA);
+		else if(ft_stack_len(sa) == 3)
+			sort_three(&sa);
 		else
-			stack_sort(&a, &b);
+			stack_sort(&sa, &sa);
 	}
-	ft_print_test(a, b);
+	ft_print_test(sa, sb);
 	return (0);
 }
 

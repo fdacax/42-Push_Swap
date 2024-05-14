@@ -21,19 +21,31 @@ void	stack_sort(t_stack **sa, t_stack **sb)
 		do_op(sa, sb, PB);
 	if (len -- > 3 && !stack_sorted(*sa))
 		do_op(sa, sb, PB);
+	ft_printf("droga\n");
 	while (len-- > 3 && !stack_sorted(*sa))
 	{
 		init_nodes_a(*sa, *sb);
 		move_to_b(sa,sb);
+
 	}
 	sort_three(sa);
+
+	while(*sb)
+	{
+
+		init_stack_b(*sa, *sb);
+		move_to_a(sa, sb);
+
+	}
+	node_index(*sa);
+	check_stack(sa);
+
 }
 
 void	move_to_b(t_stack **sa, t_stack **sb)
 {
 	t_stack	*cheapest;
-
-	cheapest = cheapest(*a);
+	cheapest = cheapest_node(*sa);
 	if (cheapest->above_median && cheapest->target_node->above_median)
 		ft_rotate_both(sa, sb, cheapest);
 	else if (!(cheapest->above_median) && !(cheapest->target_node->above_median))
@@ -42,10 +54,9 @@ void	move_to_b(t_stack **sa, t_stack **sb)
 	prep_for_push(sb, cheapest->target_node, 'b');
 	do_op(sa, sb, PB);
 
-
 }
 
-t_stack	cheapest_node(t_stack *stack)
+t_stack	*cheapest_node(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -53,16 +64,17 @@ t_stack	cheapest_node(t_stack *stack)
 	{
 		if(stack->cheapest)
 			return (stack);
-		stack = stack->next
+		stack = stack->next;
 	}
+	return (NULL);
 }
 
 void	ft_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheapest_node)
 {
-	while (*sb != cheapest_node->target_node && *a != cheapest_node)
+	while (*sb != cheapest_node->target_node && *sa != cheapest_node)
 		do_op(sa, sb, RR);
-	node_index(*a);
-	node_index(*b);
+	node_index(*sa);
+	node_index(*sb);
 }
 
 void ft_r_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheapest_node)
@@ -80,6 +92,7 @@ void prep_for_push(t_stack **stack, t_stack *node, char name)
 	{
 		if (name == 'a')
 		{
+
 			if (node ->above_median)
 				do_op(stack, NULL, RA);
 			else
@@ -88,9 +101,9 @@ void prep_for_push(t_stack **stack, t_stack *node, char name)
 		else if (name == 'b')
 		{
 			if (node->above_median)
-				do_op(stack, NULL, RB);
+				do_op(NULL, stack, RB);
 			else
-				do_op(stack, NULL, RB);
+				do_op(NULL, stack, RB);
 		}
 	}
 }
