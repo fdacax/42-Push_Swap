@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void init_stack_b(t_stack *sa, t_stack *sb)
+void	init_stack_b(t_stack *sa, t_stack *sb)
 {
 	node_index(sa);
 	node_index(sb);
@@ -21,9 +21,9 @@ void init_stack_b(t_stack *sa, t_stack *sb)
 
 void	set_target_b_to_a(t_stack *sa, t_stack *sb)
 {
-	t_stack *sa_aux;
-	t_stack *target;
-	long 	max_index;
+	t_stack	*sa_aux;
+	t_stack	*target;
+	long	max_index;
 
 	while (sb)
 	{
@@ -38,12 +38,10 @@ void	set_target_b_to_a(t_stack *sa, t_stack *sb)
 			}
 			sa_aux = sa_aux->next;
 		}
-		if(max_index == LONG_MAX)
+		if (max_index == LONG_MAX)
 			sb->target_node = find_max_data(sa);
 		else
 			sb->target_node = target;
 		sb = sb->next;
 	}
-
-
 }

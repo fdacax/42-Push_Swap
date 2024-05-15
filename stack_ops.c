@@ -18,18 +18,18 @@ void	do_op(t_stack **sa, t_stack **sb, t_ops op)
 		return (ft_swap(sa, "sa"));
 	else if (op == SB)
 		return (ft_swap(sb, "sb"));
-	else if(op == PA)
+	else if (op == PA)
 		return (ft_push(sa, sb, "pa"));
-	else if(op == PB)
+	else if (op == PB)
 		return (ft_push(sa, sb, "pb"));
-	else if(op == RA)
+	else if (op == RA)
 		return (ft_rotate(sa, "ra"));
 	else if (op == RB)
 		return (ft_rotate(sb, "rb"));
-	else if(op == RRA)
-		return(ft_reverse_rotate(sa, "rra"));
-	else if(op == RRB)
-		return(ft_reverse_rotate(sb, "rrb"));
+	else if (op == RRA)
+		return (ft_reverse_rotate(sa, "rra"));
+	else if (op == RRB)
+		return (ft_reverse_rotate(sb, "rrb"));
 	else if (op == RR)
 		return (ft_rr(sa, sb, "rr"));
 	else if (op == RRR)
@@ -48,10 +48,9 @@ void	ft_swap(t_stack **stack, char *str)
 		ft_putendl_fd(str, 1);
 }
 
-void ft_push(t_stack **stack1, t_stack **stack2, char *str)
+void	ft_push(t_stack **stack1, t_stack **stack2, char *str)
 {
-	// s1(10, 20, 30)  s2(40, 50, 60)
-	t_stack *aux;
+	t_stack	*aux;
 
 	aux = *stack1;
 	ft_shift_stack(*stack1);
@@ -61,10 +60,9 @@ void ft_push(t_stack **stack1, t_stack **stack2, char *str)
 	*stack2 = aux;
 	if (str)
 		ft_putendl_fd(str, 1);
-
 }
 
-void ft_rotate(t_stack **stack, char *str)
+void	ft_rotate(t_stack **stack, char *str)
 {
 	t_stack	*aux;
 	t_stack	*head;

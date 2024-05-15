@@ -26,14 +26,14 @@ void	node_index(t_stack *stack)
 	int	i;
 	int	half_stack;
 
-	if(!stack)
+	if (!stack)
 		return ;
 	i = 0;
 	half_stack = ft_stack_len(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
-		if(i <= half_stack)
+		if (i <= half_stack)
 			stack->above_median = true;
 		else
 			stack->above_median = false;
@@ -46,7 +46,7 @@ void	set_target_a_to_b(t_stack *sa, t_stack *sb)
 {
 	t_stack	*sb_aux;
 	t_stack	*target;
-	long	 min_index;
+	long	min_index;
 
 	while (sa)
 	{
@@ -54,7 +54,7 @@ void	set_target_a_to_b(t_stack *sa, t_stack *sb)
 		sb_aux = sb;
 		while (sb_aux)
 		{
-			if(sb_aux->data < sa->data && sb_aux->data > min_index)
+			if (sb_aux->data < sa->data && sb_aux->data > min_index)
 			{
 				min_index = sb_aux->data;
 				target = sb_aux;
@@ -71,7 +71,7 @@ void	set_target_a_to_b(t_stack *sa, t_stack *sb)
 
 void	set_cost_to_b(t_stack *sa, t_stack *sb)
 {
-	int len_sa;
+	int	len_sa;
 	int	len_sb;
 
 	len_sa = ft_stack_len(sa);
@@ -79,9 +79,9 @@ void	set_cost_to_b(t_stack *sa, t_stack *sb)
 	while (sa)
 	{
 		sa->cost = sa->index;
-		if(!(sa->above_median))
+		if (!(sa->above_median))
 			sa->cost = len_sa - (sa->index);
-		if(sa->target_node->above_median)
+		if (sa->target_node->above_median)
 			sa->cost += sa->target_node->index;
 		else
 			sa->cost += len_sb - (sa->target_node->index);
@@ -91,14 +91,15 @@ void	set_cost_to_b(t_stack *sa, t_stack *sb)
 
 void	set_cheapest(t_stack *stack)
 {
-	long 	max_long;
+	long	max_long;
 	t_stack	*cheapest_node;
+
 	if (!stack)
 		return ;
 	max_long = LONG_MAX;
 	while (stack)
 	{
-		if(stack->cost < max_long)
+		if (stack->cost < max_long)
 		{
 			max_long = stack->cost;
 			cheapest_node = stack;
@@ -107,4 +108,3 @@ void	set_cheapest(t_stack *stack)
 	}
 	cheapest_node->cheapest = true;
 }
-

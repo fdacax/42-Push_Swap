@@ -14,11 +14,11 @@
 
 bool	stack_sorted(t_stack *stack)
 {
-	if(!stack)
+	if (!stack)
 		return (1);
 	while (stack->next)
 	{
-		if(stack->data > stack->next->data)
+		if (stack->data > stack->next->data)
 			return (false);
 		stack = stack->next;
 	}
@@ -33,7 +33,7 @@ void	ft_shift_stack(t_stack *stack)
 
 t_stack	*ft_find_last_node(t_stack *stack)
 {
-	t_stack *last_node;
+	t_stack	*last_node;
 
 	last_node = stack;
 	while (last_node->next)
@@ -43,7 +43,7 @@ t_stack	*ft_find_last_node(t_stack *stack)
 
 t_stack	*ft_find_penult_node(t_stack *stack)
 {
-	t_stack *last_node;
+	t_stack	*last_node;
 
 	last_node = stack;
 	while (last_node->next->next)

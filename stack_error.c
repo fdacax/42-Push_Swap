@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void ft_print_error(void)
+void	ft_print_error(void)
 {
 	ft_putendl_fd("Error", 2);
 	exit (1);
@@ -41,10 +41,9 @@ int	check_numbers(char **input)
 		j = 0;
 		while (input[i][j])
 		{
-			if ((input[i][j] == '+' ||input[i][j] == '-')  && !(ft_isdigit(input[i][j + 1])))
+			if ((input[i][j] == '+' || input[i][j] == '-') && !(ft_isdigit(input[i][j + 1])))
 				return (0);
-			if (input[i][j] != ' ' && input[i][j] != '\t'
-				&& !(ft_isdigit(input[i][j])) && input[i][j] != '+' && input[i][j] != '-')
+			if (input[i][j] != ' ' && input[i][j] != '\t' && !(ft_isdigit(input[i][j])) && input[i][j] != '+' && input[i][j] != '-')
 				return (0);
 			if (ft_isdigit(input[i][j]))
 				flag_number = true;
@@ -57,7 +56,7 @@ int	check_numbers(char **input)
 	return (1);
 }
 
-int check_arg(char **str, int *len)
+int	check_arg(char **str, int *len)
 {
 	int	i;
 	int	j;

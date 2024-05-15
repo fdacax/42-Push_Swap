@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*sa;
 	t_stack	*sb;
-	int 	*data;
-	int 	len;
+	int		*data;
+	int		len;
 
 	len = 0;
 	ft_check_errors(argc, argv, &len);
@@ -29,9 +29,9 @@ int main(int argc, char **argv)
 	init_stack_a(&sa, data, len);
 	if (!stack_sorted(sa))
 	{
-		if(ft_stack_len(sa) == 2)
+		if (ft_stack_len(sa) == 2)
 			do_op(&sa, &sa, SA);
-		else if(ft_stack_len(sa) == 3)
+		else if (ft_stack_len(sa) == 3)
 			sort_three(&sa);
 		else
 			stack_sort(&sa, &sa);
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-void ft_print_test(t_stack *head_a, t_stack *head_b)
+void	ft_print_test(t_stack *head_a, t_stack *head_b)
 {
 	printf("List a:\n");
 	while (head_a)

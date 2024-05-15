@@ -15,7 +15,7 @@
 int	*ft_add_number(char **str, int *nbr)
 {
 	int	i;
-	int j;
+	int	j;
 	int	k;
 
 	if (!nbr)
@@ -31,7 +31,8 @@ int	*ft_add_number(char **str, int *nbr)
 				j++;
 			if (str[i][j])
 				nbr[k++] = ft_atoi(&str[i][j]);
-			while (ft_isdigit(str[i][j]) || str[i][j] == '+' || str[i][j] == '-')
+			while (ft_isdigit(str[i][j]) || str[i][j] == '+'
+			|| str[i][j] == '-')
 				j++;
 		}
 		i++;
@@ -54,16 +55,16 @@ void	init_stack_a(t_stack **stack, int *data, int len)
 void	ft_add_node(t_stack **stack, int n)
 {
 	t_stack	*node;
-	t_stack *last;
+	t_stack	*last;
 
-	if(!stack)
+	if (!stack)
 		return ;
 	node = ft_calloc(1, sizeof(t_stack));
-	if(!node)
+	if (!node)
 		return ;
 	node->next = NULL;
 	node->data = n;
-	if(!(*stack))
+	if (!(*stack))
 	{
 		*stack = node;
 		node->prev = NULL;
@@ -89,7 +90,7 @@ long	ft_atol(const char *str)
 		i++;
 	while (str[i] == '-' || str[i] == '+')
 	{
-		if(str[i] == '-')
+		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
@@ -97,5 +98,3 @@ long	ft_atol(const char *str)
 		result = result * 10 + (str[i++] - '0');
 	return (result * sign);
 }
-
-

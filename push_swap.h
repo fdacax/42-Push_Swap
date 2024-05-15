@@ -36,7 +36,7 @@ typedef struct s_stack
 {
 	int				index;
 	int				data;
-	int 			cost;
+	int				cost;
 	bool			above_median;
 	bool			cheapest;
 	struct s_stack	*next;
@@ -44,24 +44,23 @@ typedef struct s_stack
 	struct s_stack	*target_node;
 }		t_stack;
 
-void ft_print_test(t_stack *head_a, t_stack *head_b);
+void	ft_print_test(t_stack *head_a, t_stack *head_b);
 
 /* ************************************************************************** */
 /*                                   Stack_init                               */
 /* ************************************************************************** */
 
-void			init_stack_a(t_stack **stack, int *data, int len);
+void		init_stack_a(t_stack **stack, int *data, int len);
 long			ft_atol(const char *str);
 void			ft_add_node(t_stack **stack, int n);
 int				*ft_add_number(char **str, int *nbr);
 void			init_nodes_a(t_stack *sa, t_stack *sb);
 void			node_index(t_stack *stack);
-void 			set_target_a_to_b(t_stack *sa, t_stack *sb);
+void			set_target_a_to_b(t_stack *sa, t_stack *sb);
 void			set_cost_to_b(t_stack *sa, t_stack *sb);
 void			set_cheapest(t_stack *stack);
-void 			init_stack_b(t_stack *sa, t_stack *sb);
+void			init_stack_b(t_stack *sa, t_stack *sb);
 void			set_target_b_to_a(t_stack *sa, t_stack *sb);
-
 
 /* ************************************************************************** */
 /*                                   Stack_ops                                */
@@ -90,11 +89,11 @@ void		stack_sort(t_stack **sa, t_stack **sb);
 t_stack		*cheapest_node(t_stack *stack);
 void		move_to_b(t_stack **sa, t_stack **sb);
 void		ft_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheapest_node);
-void 		ft_r_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheapest_node);
-void 		prep_for_push(t_stack **stack, t_stack *node, char name);
+void		ft_r_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheapest_node);
+void		prep_for_push(t_stack **stack, t_stack *node, char name);
 void		move_to_a(t_stack **sa, t_stack **sb);
 void		check_stack( t_stack **sa);
-t_stack 	*find_min_data(t_stack *stack);
+t_stack		*find_min_data(t_stack *stack);
 
 /* ************************************************************************** */
 /*                                   Stack_error                              */
