@@ -35,9 +35,9 @@ t_stack	*ft_find_last_node(t_stack *stack)
 {
 	t_stack	*last_node;
 
+	while (stack->next)
+		stack = stack->next;
 	last_node = stack;
-	while (last_node->next)
-		last_node = last_node->next;
 	return (last_node);
 }
 

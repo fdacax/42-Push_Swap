@@ -15,7 +15,7 @@
 void	move_to_a(t_stack **sa, t_stack **sb)
 {
 	prep_for_push(sa, (*sb)->target_node, 'a');
-	do_op(sa, sb, PA);
+	do_op(sb, sa, PA);
 }
 
 void	check_stack( t_stack **sa)

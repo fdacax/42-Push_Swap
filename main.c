@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		else if (ft_stack_len(sa) == 3)
 			sort_three(&sa);
 		else
-			stack_sort(&sa, &sa);
+			stack_sort(&sa, &sb);
 	}
 	ft_print_test(sa, sb);
 	return (0);
