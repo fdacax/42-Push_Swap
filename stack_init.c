@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdacax-m <fdacax-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 17:18:55 by fdacax-m          #+#    #+#             */
-/*   Updated: 2024/04/17 17:18:55 by fdacax-m         ###   ########.fr       */
+/*   Created: 2024/05/21 14:35:22 by fdacax-m          #+#    #+#             */
+/*   Updated: 2024/05/21 14:35:22 by fdacax-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*ft_add_number(char **str, int *nbr)
+int	*add_numbers(char **str, int *nbr)
 {
 	int	i;
 	int	j;
@@ -32,7 +32,7 @@ int	*ft_add_number(char **str, int *nbr)
 			if (str[i][j])
 				nbr[k++] = ft_atoi(&str[i][j]);
 			while (ft_isdigit(str[i][j]) || str[i][j] == '+'
-			|| str[i][j] == '-')
+				   || str[i][j] == '-')
 				j++;
 		}
 		i++;
@@ -63,7 +63,7 @@ void	ft_add_node(t_stack **stack, int n)
 	if (!node)
 		return ;
 	node->next = NULL;
-	node->data = n;
+	node->number = n;
 	if (!(*stack))
 	{
 		*stack = node;
@@ -71,7 +71,7 @@ void	ft_add_node(t_stack **stack, int n)
 	}
 	else
 	{
-		last = ft_find_last_node(*stack);
+		last = find_last_node(*stack);
 		last->next = node;
 		node->prev = last;
 	}
@@ -97,4 +97,14 @@ long	ft_atol(const char *str)
 	while (ft_isdigit(str[i]))
 		result = result * 10 + (str[i++] - '0');
 	return (result * sign);
+}
+
+t_stack	*find_last_node(t_stack *stack)
+{
+	t_stack	*last_node;
+
+	while (stack->next)
+		stack = stack->next;
+	last_node = stack;
+	return (last_node);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdacax-m <fdacax-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 20:07:11 by fdacax-m          #+#    #+#             */
-/*   Updated: 2024/04/24 20:07:11 by fdacax-m         ###   ########.fr       */
+/*   Created: 2024/05/21 14:31:29 by fdacax-m          #+#    #+#             */
+/*   Updated: 2024/05/21 14:31:29 by fdacax-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_print_error(void)
 	exit (1);
 }
 
-void	ft_check_errors(int argc, char **argv, int *len)
+void	check_errors(int argc, char **argv, int *len)
 {
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		ft_print_error();
@@ -41,9 +41,12 @@ int	check_numbers(char **input)
 		j = 0;
 		while (input[i][j])
 		{
-			if ((input[i][j] == '+' || input[i][j] == '-') && !(ft_isdigit(input[i][j + 1])))
+			if ((input[i][j] == '+' || input[i][j] == '-')
+				&& !(ft_isdigit(input[i][j + 1])))
 				return (0);
-			if (input[i][j] != ' ' && input[i][j] != '\t' && !(ft_isdigit(input[i][j])) && input[i][j] != '+' && input[i][j] != '-')
+			if (input[i][j] != ' ' && input[i][j] != '\t'
+				&& !(ft_isdigit(input[i][j]))
+				&& input[i][j] != '+' && input[i][j] != '-')
 				return (0);
 			if (ft_isdigit(input[i][j]))
 				flag_number = true;
@@ -68,16 +71,18 @@ int	check_arg(char **str, int *len)
 		while (str[i][j])
 		{
 			while (str[i][j] == ' ' || str[i][j] == '\t')
-					j++;
+				j++;
 			if (str[i][j])
 			{
 				if (ft_atoi(&str[i][j]) != ft_atol(&str[i][j]))
 					return (0);
 				*len += 1;
 			}
-			while ((str[i][j] == '-') || (str[i][j] == '+') || (ft_isdigit(str[i][j])))
+			while ((str[i][j] == '-') || (str[i][j] == '+')
+				   || (ft_isdigit(str[i][j])))
 			{
-				if ((ft_isdigit(str[i][j])) && (str[i][j + 1] == '-' || str[i][j + 1] == '+'))
+				if ((ft_isdigit(str[i][j])) && (str[i][j + 1] == '-'
+												|| str[i][j + 1] == '+'))
 					return (0);
 				j++;
 			}

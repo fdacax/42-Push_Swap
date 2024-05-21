@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils2.c                                     :+:      :+:    :+:   */
+/*   stack_ops2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdacax-m <fdacax-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 15:12:40 by fdacax-m          #+#    #+#             */
-/*   Updated: 2024/05/21 15:12:40 by fdacax-m         ###   ########.fr       */
+/*   Created: 2024/05/21 15:16:23 by fdacax-m          #+#    #+#             */
+/*   Updated: 2024/05/21 15:16:23 by fdacax-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	min_on_top(t_stack **sa)
+void	rrr(t_stack **sa, t_stack **sb, char *str)
 {
-	while ((*sa)->number != find_min(*sa)->number)
-	{
-		if (find_min(*sa)->above_median)
-			do_op(sa, NULL, RA);
-		else
-			do_op(sa, NULL, RRA);
-	}
+	str = NULL;
+	rrx(sa, str);
+	rrx(sb, str);
+	str = "rrr";
+	ft_putendl_fd(str, 1);
 }
 
-t_stack	*find_min(t_stack *sa)
+void	rr(t_stack **sa, t_stack **sb, char *str)
 {
-	t_stack	*min_node;
-	int		min;
-
-	min = sa->number;
-	while (sa)
-	{
-		if (sa->number <= min)
-		{
-			min_node = sa;
-			min = sa->number;
-		}
-		sa = sa->next;
-	}
-	return (min_node);
+	str = NULL;
+	rx(sa, str);
+	rx(sb, str);
+	str = "rr";
+	ft_putendl_fd(str, 1);
 }

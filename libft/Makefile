@@ -19,20 +19,20 @@ BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 $(OBJ): $(TARGET)
-	$(CC) -c $(TARG) 
+	@$(CC) -c $(TARG) 
 
 bonus: $(OBJ)
-	$(CC) -c $(BONUS)
-	ar rcs $(NAME) $(OBJ)
+	@$(CC) -c $(BONUS)
+	@ar rcs $(NAME) $(OBJ)
 
 clean:
-	rm -rf $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

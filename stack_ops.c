@@ -1,93 +1,107 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules0.c                                           :+:      :+:    :+:   */
+/*   stack_ops.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdacax-m <fdacax-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 18:31:02 by fdacax-m          #+#    #+#             */
-/*   Updated: 2024/04/15 20:14:13 by fdacax-m         ###   ########.fr       */
+/*   Created: 2024/05/21 15:14:12 by fdacax-m          #+#    #+#             */
+/*   Updated: 2024/05/21 15:14:12 by fdacax-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_op(t_stack **sa, t_stack **sb, t_ops op)
+void	do_op(t_stack **stack1, t_stack **stack2, t_operation op)
 {
 	if (op == SA)
-		return (ft_swap(sa, "sa"));
+		return (sx(stack1, "sa"));
 	else if (op == SB)
-		return (ft_swap(sb, "sb"));
+		return (sx(stack1, "sb"));
 	else if (op == PA)
-		return (ft_push(sa, sb, "pa"));
+		return (px(stack1, stack2, "pa"));
 	else if (op == PB)
-		return (ft_push(sa, sb, "pb"));
+		return (px(stack1, stack2, "pb"));
 	else if (op == RA)
-		return (ft_rotate(sa, "ra"));
+		return (rx(stack1, "ra"));
 	else if (op == RB)
-		return (ft_rotate(sb, "rb"));
-	else if (op == RRA)
-		return (ft_reverse_rotate(sa, "rra"));
-	else if (op == RRB)
-		return (ft_reverse_rotate(sb, "rrb"));
+		return (rx(stack1, "rb"));
 	else if (op == RR)
-		return (ft_rr(sa, sb, "rr"));
+		return (rr(stack1, stack2, "rr"));
+	else if (op == RRA)
+		return (rrx(stack1, "rra"));
+	else if (op == RRB)
+		return (rrx(stack1, "rrb"));
 	else if (op == RRR)
-		return (ft_rrr(sa, sb, "rrr"));
+		return (rrr(stack1, stack2, "rrr"));
 }
 
-void	ft_swap(t_stack **stack, char *str)
+void	rrx(t_stack **stack, char *str)
 {
-	t_stack	*aux;
-	// Lista valor (40 e 30, 20)
-	aux = (*stack)->next; // aux aponta para o 2º nó (valor 30)
-	(*stack)->next = aux->next; // stack->next aponta para o proximo nó de aux(valor 20)
-	aux->next = (*stack); // aux->next aponta para o primeiro nó da lista (valor 40)
-	(*stack) = aux; // volta ao inicio da lista (com os valores 30, 40,20)
-	if (str)
-		ft_putendl_fd(str, 1);
-}
-
-void	ft_push(t_stack **stack1, t_stack **stack2, char *str)
-{
-	t_stack	*aux;
-
-	aux = *stack1;
-	ft_shift_stack(*stack1);
-	ft_shift_stack(*stack2);
-	*stack1 = (*stack1)->next;
-	aux->next = *stack2;
-	*stack2 = aux;
-	if (str)
-		ft_putendl_fd(str, 1);
-}
-
-void	ft_rotate(t_stack **stack, char *str)
-{
-	t_stack	*aux;
-	t_stack	*head;
-
-	aux = (*stack); // aux aponta para o n1 da lista
-	(*stack) = (*stack)->next; // o n1 agora vira n2
-	head = (*stack); //o meu head aponta para o inicio da stack
-	(*stack) = ft_find_last_node(*stack);// last aponta para o ultimo no da stack
-	(*stack)->next = aux; // pega meu n1 e coloca a seguir do ultimo
-	aux->next = NULL; // defino como ultimo
-	(*stack) = head; // volto ao inicio
-	if (str)
-		ft_putendl_fd(str, 1);
-}
-
-void	ft_reverse_rotate(t_stack **stack, char *str)
-{
+	t_stack	*helper;
 	t_stack	*last;
+	int		size;
+	int		i;
+
+	last = find_last_node(*stack);
+	helper = *stack;
+	shift_stack(*stack);
+	size = stack_len(*stack);
+	i = 0;
+	while (i < size - 1)
+	{
+		if (i == size - 2)
+			helper->next = NULL;
+		helper = helper->next;
+		i++;
+	}
+	last->next = *stack;
+	*stack = last;
+	if (str)
+		ft_putendl_fd(str, 1);
+}
+
+void	sx(t_stack **stack, char *str)
+{
 	t_stack	*aux;
 
-	last = ft_find_penult_node(*stack);
-	aux = ft_find_last_node(*stack);
-	aux->next = *stack;
-	last->next = NULL;
+	aux = (*stack)->next;
+	(*stack)->next = aux->next;
+	aux->next = (*stack);
 	(*stack) = aux;
+	if (str)
+		ft_putendl_fd(str, 1);
+}
+
+void	rx(t_stack **stack, char *str)
+{
+	t_stack	*helper;
+	t_stack	*last_node;
+	t_stack	*sec;
+
+	helper = *stack;
+	last_node = find_last_node(*stack);
+	sec = (*stack)->next;
+	shift_stack(*stack);
+	(*stack) = sec;
+	last_node->next = helper;
+	helper->next = NULL;
+	if (str)
+		ft_putendl_fd(str, 1);
+}
+
+void	px(t_stack **src, t_stack **dest, char *str)
+{
+	t_stack	*helper;
+
+	helper = *src;
+	if (stack_len(*src) == 0)
+		return ;
+	shift_stack(*src);
+	shift_stack(*dest);
+	*src = (*src)->next;
+	helper->next = *dest;
+	*dest = helper;
 	if (str)
 		ft_putendl_fd(str, 1);
 }

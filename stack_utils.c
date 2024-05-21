@@ -1,44 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdacax-m <fdacax-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 16:19:26 by fdacax-m          #+#    #+#             */
-/*   Updated: 2024/04/15 20:17:41 by fdacax-m         ###   ########.fr       */
+/*   Created: 2024/05/21 14:45:25 by fdacax-m          #+#    #+#             */
+/*   Updated: 2024/05/21 14:45:25 by fdacax-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	stack_sorted(t_stack *stack)
+void	shift_stack(t_stack *popped)
 {
-	if (!stack)
-		return (1);
-	while (stack->next)
+	while (popped)
+		popped = popped->next;
+}
+
+int	stack_len(t_stack *stack)
+{
+	int	len;
+
+	len = 0;
+	while (stack)
 	{
-		if (stack->data > stack->next->data)
-			return (false);
+		len++;
 		stack = stack->next;
 	}
-	return (true);
+	return (len);
 }
 
-void	ft_shift_stack(t_stack *stack)
+t_stack	*find_biggest_node(t_stack *stack)
 {
+	int		big_number;
+	t_stack	*big_node;
+
+	big_number = stack->number;
 	while (stack)
+	{
+		if (stack->number >= big_number)
+		{
+			big_node = stack;
+			big_number = stack->number;
+		}
 		stack = stack->next;
-}
-
-t_stack	*ft_find_last_node(t_stack *stack)
-{
-	t_stack	*last_node;
-
-	while (stack->next)
-		stack = stack->next;
-	last_node = stack;
-	return (last_node);
+	}
+	return (big_node);
 }
 
 t_stack	*ft_find_penult_node(t_stack *stack)
@@ -51,15 +59,13 @@ t_stack	*ft_find_penult_node(t_stack *stack)
 	return (last_node);
 }
 
-int	ft_stack_len(t_stack *stack)
+t_stack	*get_cheapest(t_stack *stack)
 {
-	int	i;
-
-	i = 0;
 	while (stack)
 	{
-		i++;
+		if (stack->cheapest)
+			return (stack);
 		stack = stack->next;
 	}
-	return (i);
+	return (stack);
 }
