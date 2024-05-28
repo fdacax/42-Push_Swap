@@ -97,6 +97,7 @@ t_stack	*get_cheapest(t_stack *stack);
 
 void	min_on_top(t_stack **sa);
 t_stack	*find_min(t_stack *sa);
+void	ft_free(t_stack *sa, t_stack *sb, int *data);
 
 /* ************************************************************************** */
 /*                              stack_sort                                    */

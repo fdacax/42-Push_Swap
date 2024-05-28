@@ -39,3 +39,24 @@ t_stack	*find_min(t_stack *sa)
 	}
 	return (min_node);
 }
+
+void	ft_free(t_stack *sa, t_stack *sb, int *data)
+{
+	t_stack	*aux;
+
+	aux = sa;
+	while (aux)
+	{
+		aux = sa->next;
+		free(sa);
+		sa = aux;
+	}
+	aux = sb;
+	while (aux)
+	{
+		aux = sb->next;
+		free(sb);
+		sb = aux;
+	}
+	free(data);
+}

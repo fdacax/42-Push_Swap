@@ -36,5 +36,6 @@ int	main(int argc, char **argv)
 		else
 			big_sort(&sa, &sb);
 	}
+	ft_free(sa, sb, data);
 	return (0);
 }

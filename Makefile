@@ -1,3 +1,4 @@
+MAKEFLAGS += -s
 NAME = push_swap
 CC = cc -g -Wall -Wextra -Werror
 RF = rm -rf
