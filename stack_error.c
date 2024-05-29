@@ -79,7 +79,7 @@ int	check_arg(char **str, int *len)
 				*len += 1;
 			}
 			while ((str[i][j] == '-') || (str[i][j] == '+')
-				   || (ft_isdigit(str[i][j])))
+			|| (ft_isdigit(str[i][j])))
 			{
 				if ((ft_isdigit(str[i][j])) && (str[i][j + 1] == '-'
 												|| str[i][j + 1] == '+'))

@@ -21,7 +21,7 @@ void	move_a_to_b(t_stack **sa, t_stack **sb)
 		&& cheapest_node->target_node->above_median)
 		rotate_both(sa, sb, cheapest_node);
 	else if (!(cheapest_node->above_median)
-			 && !(cheapest_node->target_node->above_median))
+		&& !(cheapest_node->target_node->above_median))
 		rev_rotate_both(sa, sb, cheapest_node);
 	prep_for_push(sa, cheapest_node, 'a');
 	prep_for_push(sb, cheapest_node->target_node, 'b');

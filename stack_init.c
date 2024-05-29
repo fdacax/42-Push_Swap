@@ -32,7 +32,7 @@ int	*add_numbers(char **str, int *nbr)
 			if (str[i][j])
 				nbr[k++] = ft_atoi(&str[i][j]);
 			while (ft_isdigit(str[i][j]) || str[i][j] == '+'
-				   || str[i][j] == '-')
+				|| str[i][j] == '-')
 				j++;
 		}
 		i++;
