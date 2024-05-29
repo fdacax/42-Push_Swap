@@ -60,3 +60,21 @@ void	ft_free(t_stack *sa, t_stack *sb, int *data)
 	}
 	free(data);
 }
+
+int	check_number(char *str, int *j)
+{
+	while (str[*j] == '-' || str[*j] == '+' || ft_isdigit(str[*j]))
+	{
+		if (ft_isdigit(str[*j]) && (str[*j + 1] == '-' || str[*j + 1] == '+'))
+			return (0);
+		(*j)++;
+	}
+	return (1);
+}
+
+int	is_valid_char(char c)
+{
+	if (c != ' ' && c != '\t' && !ft_isdigit(c) && c != '+' && c != '-')
+		return (0);
+	return (1);
+}

@@ -44,9 +44,7 @@ int	check_numbers(char **input)
 			if ((input[i][j] == '+' || input[i][j] == '-')
 				&& !(ft_isdigit(input[i][j + 1])))
 				return (0);
-			if (input[i][j] != ' ' && input[i][j] != '\t'
-				&& !(ft_isdigit(input[i][j]))
-				&& input[i][j] != '+' && input[i][j] != '-')
+			if (!is_valid_char(input[i][j]))
 				return (0);
 			if (ft_isdigit(input[i][j]))
 				flag_number = true;
@@ -78,14 +76,8 @@ int	check_arg(char **str, int *len)
 					return (0);
 				*len += 1;
 			}
-			while ((str[i][j] == '-') || (str[i][j] == '+')
-			|| (ft_isdigit(str[i][j])))
-			{
-				if ((ft_isdigit(str[i][j])) && (str[i][j + 1] == '-'
-												|| str[i][j + 1] == '+'))
-					return (0);
-				j++;
-			}
+			if (!check_number(str[i], &j))
+				return (0);
 		}
 		i++;
 	}

@@ -133,5 +133,7 @@ void	px(t_stack **src, t_stack **dest, char *str);
 
 void	rrr(t_stack **sa, t_stack **sb, char *str);
 void	rr(t_stack **sa, t_stack **sb, char *str);
+int		check_number(char *str, int *j);
+int		is_valid_char(char c);
 
 #endif
