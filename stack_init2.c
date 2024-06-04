@@ -54,10 +54,10 @@ void	set_target_to_sb(t_stack *sa, t_stack *sb)
 		current_b = sb;
 		while (current_b)
 		{
-			if (current_b->number < sa->number
-				&& current_b->number > best_index)
+			if (current_b->data < sa->data
+				&& current_b->data > best_index)
 			{
-				best_index = current_b->number;
+				best_index = current_b->data;
 				target_node = current_b;
 			}
 			current_b = current_b->next;

@@ -18,7 +18,7 @@ bool	is_sorted(t_stack *stack)
 		return (true);
 	while (stack->next)
 	{
-		if (stack->number > stack->next->number)
+		if (stack->data > stack->next->data)
 			return (false);
 		stack = stack->next;
 	}
@@ -34,20 +34,20 @@ void	sort_three(t_stack **stack)
 		do_op(stack, NULL, RA);
 	else if ((*stack)->next == biggest_node)
 		do_op(stack, NULL, RRA);
-	if ((*stack)->number > (*stack)->next->number)
+	if ((*stack)->data > (*stack)->next->data)
 		do_op(stack, NULL, SA);
 }
 
 void	stack_sort(t_stack **sa, t_stack **sb)
 {
-	int	len_a;
+	int	len;
 
-	len_a = stack_len(*sa);
-	if (len_a-- > 3 && !is_sorted(*sa))
+	len = stack_len(*sa);
+	if (len-- > 3 && !is_sorted(*sa))
 		do_op(sa, sb, PB);
-	if (len_a-- > 3 && !is_sorted(*sa))
+	if (len-- > 3 && !is_sorted(*sa))
 		do_op(sa, sb, PB);
-	while (len_a-- > 3 && !is_sorted(*sa))
+	while (len-- > 3 && !is_sorted(*sa))
 	{
 		init_nodes_sa(*sa, *sb);
 		move_to_sb(sa, sb);

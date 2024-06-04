@@ -14,7 +14,7 @@
 
 void	min_on_top(t_stack **sa)
 {
-	while ((*sa)->number != find_min(*sa)->number)
+	while ((*sa)->data != find_min(*sa)->data)
 	{
 		if (find_min(*sa)->above_median)
 			do_op(sa, NULL, RA);
@@ -28,13 +28,13 @@ t_stack	*find_min(t_stack *sa)
 	t_stack	*min_node;
 	int		min;
 
-	min = sa->number;
+	min = sa->data;
 	while (sa)
 	{
-		if (sa->number <= min)
+		if (sa->data <= min)
 		{
 			min_node = sa;
-			min = sa->number;
+			min = sa->data;
 		}
 		sa = sa->next;
 	}
@@ -62,7 +62,7 @@ void	ft_free(t_stack *sa, t_stack *sb, int *data)
 	free(data);
 }
 
-int	check_number(char *str, int *j)
+int	is_valid_number(char *str, int *j)
 {
 	while (str[*j] == '-' || str[*j] == '+' || ft_isdigit(str[*j]))
 	{

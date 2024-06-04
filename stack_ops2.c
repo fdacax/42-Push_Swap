@@ -15,8 +15,8 @@
 void	rrr(t_stack **sa, t_stack **sb, char *str)
 {
 	str = NULL;
-	rrx(sa, str);
-	rrx(sb, str);
+	reverse_rotate(sa, str);
+	reverse_rotate(sb, str);
 	str = "rrr";
 	ft_putendl_fd(str, 1);
 }
@@ -24,8 +24,8 @@ void	rrr(t_stack **sa, t_stack **sb, char *str)
 void	rr(t_stack **sa, t_stack **sb, char *str)
 {
 	str = NULL;
-	rx(sa, str);
-	rx(sb, str);
+	rotate(sa, str);
+	rotate(sb, str);
 	str = "rr";
 	ft_putendl_fd(str, 1);
 }

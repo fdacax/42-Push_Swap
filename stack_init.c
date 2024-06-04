@@ -47,12 +47,12 @@ void	init_stack_a(t_stack **stack, int *data, int len)
 	i = 0;
 	while (i < len)
 	{
-		ft_add_node(stack, data[i]);
+		add_node(stack, data[i]);
 		i++;
 	}
 }
 
-void	ft_add_node(t_stack **stack, int n)
+void	add_node(t_stack **stack, int n)
 {
 	t_stack	*node;
 	t_stack	*last;
@@ -63,7 +63,7 @@ void	ft_add_node(t_stack **stack, int n)
 	if (!node)
 		return ;
 	node->next = NULL;
-	node->number = n;
+	node->data = n;
 	if (!(*stack))
 	{
 		*stack = node;

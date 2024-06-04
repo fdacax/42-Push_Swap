@@ -15,28 +15,28 @@
 void	do_op(t_stack **stack1, t_stack **stack2, t_operation op)
 {
 	if (op == SA)
-		return (sx(stack1, "sa"));
+		return (swap(stack1, "sa"));
 	else if (op == SB)
-		return (sx(stack1, "sb"));
+		return (swap(stack1, "sb"));
 	else if (op == PA)
-		return (px(stack1, stack2, "pa"));
+		return (push(stack1, stack2, "pa"));
 	else if (op == PB)
-		return (px(stack1, stack2, "pb"));
+		return (push(stack1, stack2, "pb"));
 	else if (op == RA)
-		return (rx(stack1, "ra"));
+		return (rotate(stack1, "ra"));
 	else if (op == RB)
-		return (rx(stack1, "rb"));
+		return (rotate(stack1, "rb"));
 	else if (op == RR)
 		return (rr(stack1, stack2, "rr"));
 	else if (op == RRA)
-		return (rrx(stack1, "rra"));
+		return (reverse_rotate(stack1, "rra"));
 	else if (op == RRB)
-		return (rrx(stack1, "rrb"));
+		return (reverse_rotate(stack1, "rrb"));
 	else if (op == RRR)
 		return (rrr(stack1, stack2, "rrr"));
 }
 
-void	rrx(t_stack **stack, char *str)
+void	reverse_rotate(t_stack **stack, char *str)
 {
 	t_stack	*helper;
 	t_stack	*last;
@@ -61,7 +61,7 @@ void	rrx(t_stack **stack, char *str)
 		ft_putendl_fd(str, 1);
 }
 
-void	sx(t_stack **stack, char *str)
+void	swap(t_stack **stack, char *str)
 {
 	t_stack	*aux;
 
@@ -73,7 +73,7 @@ void	sx(t_stack **stack, char *str)
 		ft_putendl_fd(str, 1);
 }
 
-void	rx(t_stack **stack, char *str)
+void	rotate(t_stack **stack, char *str)
 {
 	t_stack	*helper;
 	t_stack	*last_node;
@@ -90,7 +90,7 @@ void	rx(t_stack **stack, char *str)
 		ft_putendl_fd(str, 1);
 }
 
-void	px(t_stack **src, t_stack **dest, char *str)
+void	push(t_stack **src, t_stack **dest, char *str)
 {
 	t_stack	*helper;
 

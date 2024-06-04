@@ -36,13 +36,13 @@ t_stack	*find_biggest_node(t_stack *stack)
 	int		big_number;
 	t_stack	*big_node;
 
-	big_number = stack->number;
+	big_number = stack->data;
 	while (stack)
 	{
-		if (stack->number >= big_number)
+		if (stack->data >= big_number)
 		{
 			big_node = stack;
-			big_number = stack->number;
+			big_number = stack->data;
 		}
 		stack = stack->next;
 	}

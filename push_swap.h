@@ -34,7 +34,7 @@ typedef enum operations
 
 typedef struct s_stack
 {
-	int				number;
+	int				data;
 	int				index;
 	int				push_cost;
 	bool			above_median;
@@ -61,7 +61,7 @@ void	check_duplicate(int *nbr, int len);
 int		*add_numbers(char **str, int *nbr);
 void	init_stack_a(t_stack **stack, int *data, int len);
 long	ft_atol(const char *str);
-void	ft_add_node(t_stack **stack, int n);
+void	add_node(t_stack **stack, int n);
 t_stack	*find_last_node(t_stack *stack);
 
 /* ************************************************************************** */
@@ -98,6 +98,8 @@ t_stack	*get_cheapest(t_stack *stack);
 void	min_on_top(t_stack **sa);
 t_stack	*find_min(t_stack *sa);
 void	ft_free(t_stack *sa, t_stack *sb, int *data);
+int		is_valid_number(char *str, int *j);
+int		is_valid_char(char c);
 
 /* ************************************************************************** */
 /*                              stack_sort                                    */
@@ -122,10 +124,10 @@ void	set_stack(t_stack **stack, t_stack *node, char s_name);
 /* ************************************************************************** */
 
 void	do_op(t_stack **stack1, t_stack **stack2, t_operation op);
-void	rrx(t_stack **stack, char *str);
-void	sx(t_stack **stack, char *str);
-void	rx(t_stack **stack, char *str);
-void	px(t_stack **src, t_stack **dest, char *str);
+void	reverse_rotate(t_stack **stack, char *str);
+void	swap(t_stack **stack, char *str);
+void	rotate(t_stack **stack, char *str);
+void	push(t_stack **src, t_stack **dest, char *str);
 
 /* ************************************************************************** */
 /*                              stack_ops2                                    */
@@ -133,7 +135,5 @@ void	px(t_stack **src, t_stack **dest, char *str);
 
 void	rrr(t_stack **sa, t_stack **sb, char *str);
 void	rr(t_stack **sa, t_stack **sb, char *str);
-int		check_number(char *str, int *j);
-int		is_valid_char(char c);
 
 #endif

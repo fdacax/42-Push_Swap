@@ -76,7 +76,7 @@ int	check_arg(char **str, int *len)
 					return (0);
 				*len += 1;
 			}
-			if (!check_number(str[i], &j))
+			if (!is_valid_number(str[i], &j))
 				return (0);
 		}
 		i++;
