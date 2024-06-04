@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void	init_nodes_b(t_stack *sa, t_stack *sb)
+void	init_nodes_sb(t_stack *sa, t_stack *sb)
 {
 	current_index(sa);
 	current_index(sb);
-	set_target_b(sa, sb);
+	set_target_to_sa(sa, sb);
 }
 
-void	set_target_b(t_stack *sa, t_stack *sb)
+void	set_target_to_sa(t_stack *sa, t_stack *sb)
 {
 	t_stack	*current_a;
 	t_stack	*target_node;

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	move_a_to_b(t_stack **sa, t_stack **sb)
+void	move_to_sb(t_stack **sa, t_stack **sb)
 {
 	t_stack	*cheapest_node;
 
@@ -23,14 +23,14 @@ void	move_a_to_b(t_stack **sa, t_stack **sb)
 	else if (!(cheapest_node->above_median)
 		&& !(cheapest_node->target_node->above_median))
 		rev_rotate_both(sa, sb, cheapest_node);
-	prep_for_push(sa, cheapest_node, 'a');
-	prep_for_push(sb, cheapest_node->target_node, 'b');
+	set_stack(sa, cheapest_node, 'a');
+	set_stack(sb, cheapest_node->target_node, 'b');
 	do_op(sa, sb, PB);
 }
 
-void	move_b_to_a(t_stack **sa, t_stack **sb)
+void	move_to_sa(t_stack **sa, t_stack **sb)
 {
-	prep_for_push(sa, (*sb)->target_node, 'a');
+	set_stack(sa, (*sb)->target_node, 'a');
 	do_op(sb, sa, PA);
 }
 
@@ -50,7 +50,7 @@ void	rev_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheap)
 	current_index(*sb);
 }
 
-void	prep_for_push(t_stack **stack, t_stack *node, char s_name)
+void	set_stack(t_stack **stack, t_stack *node, char s_name)
 {
 	while (*stack != node)
 	{

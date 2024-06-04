@@ -53,7 +53,7 @@ int	check_numbers(char **input)
 		i++;
 	}
 	if (!flag_number)
-		exit (1);
+		ft_print_error();
 	return (1);
 }
 

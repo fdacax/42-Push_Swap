@@ -38,7 +38,7 @@ void	sort_three(t_stack **stack)
 		do_op(stack, NULL, SA);
 }
 
-void	big_sort(t_stack **sa, t_stack **sb)
+void	stack_sort(t_stack **sa, t_stack **sb)
 {
 	int	len_a;
 
@@ -49,14 +49,14 @@ void	big_sort(t_stack **sa, t_stack **sb)
 		do_op(sa, sb, PB);
 	while (len_a-- > 3 && !is_sorted(*sa))
 	{
-		init_nodes_a(*sa, *sb);
-		move_a_to_b(sa, sb);
+		init_nodes_sa(*sa, *sb);
+		move_to_sb(sa, sb);
 	}
 	sort_three(sa);
 	while (*sb)
 	{
-		init_nodes_b(*sa, *sb);
-		move_b_to_a(sa, sb);
+		init_nodes_sb(*sa, *sb);
+		move_to_sa(sa, sb);
 	}
 	current_index(*sa);
 	min_on_top(sa);

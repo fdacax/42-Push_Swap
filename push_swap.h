@@ -68,18 +68,18 @@ t_stack	*find_last_node(t_stack *stack);
 /*                              stack_init2                                   */
 /* ************************************************************************** */
 
-void	init_nodes_a(t_stack *sa, t_stack *sb);
+void	init_nodes_sa(t_stack *sa, t_stack *sb);
 void	current_index(t_stack *stack);
-void	set_target_a(t_stack *sa, t_stack *sb);
-void	check_cost_a(t_stack *sa, t_stack *sb);
+void	set_target_to_sb(t_stack *sa, t_stack *sb);
+void	set_cost(t_stack *sa, t_stack *sb);
 void	set_cheapest(t_stack *stack);
 
 /* ************************************************************************** */
 /*                              stack_init3                                   */
 /* ************************************************************************** */
 
-void	init_nodes_b(t_stack *sa, t_stack *sb);
-void	set_target_b(t_stack *sa, t_stack *sb);
+void	init_nodes_sb(t_stack *sa, t_stack *sb);
+void	set_target_to_sa(t_stack *sa, t_stack *sb);
 
 /* ************************************************************************** */
 /*                              stack_utils                                   */
@@ -105,17 +105,17 @@ void	ft_free(t_stack *sa, t_stack *sb, int *data);
 
 bool	is_sorted(t_stack *stack);
 void	sort_three(t_stack **stack);
-void	big_sort(t_stack **sa, t_stack **sb);
+void	stack_sort(t_stack **sa, t_stack **sb);
 
 /* ************************************************************************** */
 /*                              stack_push                                    */
 /* ************************************************************************** */
 
-void	move_a_to_b(t_stack **sa, t_stack **sb);
-void	move_b_to_a(t_stack **sa, t_stack **sb);
+void	move_to_sb(t_stack **sa, t_stack **sb);
+void	move_to_sa(t_stack **sa, t_stack **sb);
 void	rotate_both(t_stack **sa, t_stack **sb, t_stack *cheap);
 void	rev_rotate_both(t_stack **sa, t_stack **sb, t_stack *cheap);
-void	prep_for_push(t_stack **stack, t_stack *node, char s_name);
+void	set_stack(t_stack **stack, t_stack *node, char s_name);
 
 /* ************************************************************************** */
 /*                              stack_ops                                     */

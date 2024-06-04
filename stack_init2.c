@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void	init_nodes_a(t_stack *sa, t_stack *sb)
+void	init_nodes_sa(t_stack *sa, t_stack *sb)
 {
 	current_index(sa);
 	current_index(sb);
-	set_target_a(sa, sb);
-	check_cost_a(sa, sb);
+	set_target_to_sb(sa, sb);
+	set_cost(sa, sb);
 	set_cheapest(sa);
 }
 
@@ -42,7 +42,7 @@ void	current_index(t_stack *stack)
 	}
 }
 
-void	set_target_a(t_stack *sa, t_stack *sb)
+void	set_target_to_sb(t_stack *sa, t_stack *sb)
 {
 	t_stack	*current_b;
 	t_stack	*target_node;
@@ -70,7 +70,7 @@ void	set_target_a(t_stack *sa, t_stack *sb)
 	}
 }
 
-void	check_cost_a(t_stack *sa, t_stack *sb)
+void	set_cost(t_stack *sa, t_stack *sb)
 {
 	int	len_a;
 	int	len_b;
